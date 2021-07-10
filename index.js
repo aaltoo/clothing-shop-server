@@ -1,12 +1,19 @@
 const express = require('express')
 require('dotenv').config()
-
+const sequelize = require('./db')
 const PORT = process.env.PORT || 5000
 
 const app = express()
 
-app.listen(() => console.log(`Server is running on port ${PORT}...`))
+const start = async () => {
+    try {
+        await sequelize.authenticate()
+        await sequelize.sync()
+        app.listen(() => console.log(`Server is running on port ${PORT}...`))
+    } catch (e) {
+        console.log(e)
+    }
+}
 
-app.get('/yo', function (req, res) {
-    res.send('yo my g')
-})
+start()
+
