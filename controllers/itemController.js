@@ -2,6 +2,7 @@ const uuid = require('uuid')
 const path = require('path')
 const {Item, ItemInfo} = require('../models/models')
 const ApiError = require('../error/ApiError')
+const itemService = require('../services/itemService')
 
 class ItemController {
     async create(req, res, next) {
@@ -10,19 +11,7 @@ class ItemController {
             const {img} = req.files
             let fileName = uuid.v4() + ".jpg"
             img.mv(path.resolve(__dirname, '..', 'static', fileName))
-            const item = await Item.create({name, price, brandId, typeId, img: fileName})
-
-            if (info) {
-                info = JSON.parse(info)
-                info.forEach(i => {
-                    ItemInfo.create({
-                        title: i.title,
-                        description: i.description,
-                        itemId: item.id
-                    })
-                })
-            }
-
+            const item = await itemService.create({name, price, brandId, typeId, img: fileName})
             return res.json(item)
         } catch (e) {
             next(ApiError.badRequest(e.message))
