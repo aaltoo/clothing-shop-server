@@ -3,6 +3,7 @@ import {Column, DataType, Model, Table} from 'sequelize-typescript'
 
 interface ItemCreationAttrs {
   title: string
+  image: string
 }
 
 @Table({tableName: 'items'})
