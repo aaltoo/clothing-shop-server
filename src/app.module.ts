@@ -8,6 +8,8 @@ import {ServeStaticModule} from '@nestjs/serve-static'
 import {BrandsModule} from './brands/brands.module'
 import * as path from 'path'
 import {Brand} from './brands/brands.model'
+import {SizesModule} from './sizes/sizes.module'
+import {Size} from './sizes/sizes.model'
 
 @Module({
   controllers: [],
@@ -26,13 +28,14 @@ import {Brand} from './brands/brands.model'
       username: process.env.POSTGRES_USER,
       password: process.env.POSTGRES_PASSWORD,
       database: process.env.POSTGRES_DB,
-      models: [Item, Brand],
+      models: [Item, Brand, Size],
       autoLoadModels: true,
       synchronize: true,
     }),
     ItemsModule,
     FilesModule,
     BrandsModule,
+    SizesModule,
   ],
 })
 export class AppModule {}

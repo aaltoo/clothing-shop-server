@@ -4,6 +4,8 @@ import {Column, DataType, Model, Table} from 'sequelize-typescript'
 interface ItemCreationAttrs {
   title: string
   image: string
+  brandId: number
+  categoryId: number
 }
 
 @Table({tableName: 'items'})
@@ -17,7 +19,15 @@ export class Item extends Model<Item, ItemCreationAttrs> {
   })
   id: number
 
+  @ApiProperty({description: 'Изображение'})
+  @Column({type: DataType.STRING})
+  image: string
+
+  @ApiProperty({example: 1, description: 'ID бренда'})
+  @Column({type: DataType.INTEGER})
+  brandId: number
+
   @ApiProperty({example: 1, description: 'ID категории'})
-  @Column({type: DataType.INTEGER, allowNull: true})
+  @Column({type: DataType.INTEGER})
   categoryId: number
 }

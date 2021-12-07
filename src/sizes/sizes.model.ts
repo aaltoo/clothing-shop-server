@@ -2,12 +2,12 @@ import {ApiProperty} from '@nestjs/swagger'
 import {Column, DataType, ForeignKey, Model, Table} from 'sequelize-typescript'
 import {Item} from 'src/items/items.model'
 
-interface BrandCreationAttrs {
+interface SizeCreationAttrs {
   title: string
 }
 
-@Table({tableName: 'brands'})
-export class Brand extends Model<Brand, BrandCreationAttrs> {
+@Table({tableName: 'sizes'})
+export class Size extends Model<Size, SizeCreationAttrs> {
   @ForeignKey(() => Item)
   @ApiProperty({example: 1, description: 'Уникальный идентификатор'})
   @Column({
@@ -18,7 +18,7 @@ export class Brand extends Model<Brand, BrandCreationAttrs> {
   })
   id: number
 
-  @ApiProperty({example: 'Nike', description: 'Название бренда'})
+  @ApiProperty({example: 'S', description: 'Размер'})
   @Column({type: DataType.STRING, allowNull: false})
   title: string
 }
