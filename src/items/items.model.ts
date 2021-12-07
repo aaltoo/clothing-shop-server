@@ -23,6 +23,10 @@ export class Item extends Model<Item, ItemCreationAttrs> {
   @Column({type: DataType.STRING})
   image: string
 
+  @ApiProperty({description: 'Пол'})
+  @Column({type: DataType.STRING})
+  sex: string
+
   @ApiProperty({example: 1, description: 'ID бренда'})
   @Column({type: DataType.INTEGER})
   brandId: number

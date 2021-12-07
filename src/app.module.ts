@@ -10,6 +10,8 @@ import * as path from 'path'
 import {Brand} from './brands/brands.model'
 import {SizesModule} from './sizes/sizes.module'
 import {Size} from './sizes/sizes.model'
+import {CategoriesModule} from './categories/categories.module'
+import {Category} from './categories/categories.model'
 
 @Module({
   controllers: [],
@@ -28,7 +30,7 @@ import {Size} from './sizes/sizes.model'
       username: process.env.POSTGRES_USER,
       password: process.env.POSTGRES_PASSWORD,
       database: process.env.POSTGRES_DB,
-      models: [Item, Brand, Size],
+      models: [Item, Brand, Size, Category],
       autoLoadModels: true,
       synchronize: true,
     }),
@@ -36,6 +38,7 @@ import {Size} from './sizes/sizes.model'
     FilesModule,
     BrandsModule,
     SizesModule,
+    CategoriesModule,
   ],
 })
 export class AppModule {}
