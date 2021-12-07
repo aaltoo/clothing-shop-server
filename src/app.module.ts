@@ -5,7 +5,9 @@ import {SequelizeModule} from '@nestjs/sequelize'
 import {FilesModule} from './files/files.module'
 import {ConfigModule} from '@nestjs/config'
 import {ServeStaticModule} from '@nestjs/serve-static'
+import {BrandsModule} from './brands/brands.module'
 import * as path from 'path'
+import {Brand} from './brands/brands.model'
 
 @Module({
   controllers: [],
@@ -24,12 +26,13 @@ import * as path from 'path'
       username: process.env.POSTGRES_USER,
       password: process.env.POSTGRES_PASSWORD,
       database: process.env.POSTGRES_DB,
-      models: [Item],
+      models: [Item, Brand],
       autoLoadModels: true,
       synchronize: true,
     }),
     ItemsModule,
     FilesModule,
+    BrandsModule,
   ],
 })
 export class AppModule {}
