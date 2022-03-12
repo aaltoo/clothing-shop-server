@@ -33,6 +33,9 @@ import {Category} from './categories/categories.model'
       models: [Item, Brand, Size, Category],
       autoLoadModels: true,
       synchronize: true,
+      dialectOptions: {
+        ssl: true,
+      },
     }),
     ItemsModule,
     FilesModule,
