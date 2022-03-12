@@ -16,7 +16,9 @@ export const databaseProviders = [
         password: process.env.POSTGRES_PASSWORD,
         database: process.env.POSTGRES_DB,
         models: [Item, Brand, Size, Category],
-        ssl: true,
+        dialectOptions: {
+          ssl: true,
+        },
       })
       sequelize.addModels([Size, Item, Category, Brand])
       await sequelize.sync()
