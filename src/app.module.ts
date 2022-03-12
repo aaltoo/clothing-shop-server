@@ -34,7 +34,10 @@ import {Category} from './categories/categories.model'
       autoLoadModels: true,
       synchronize: true,
       dialectOptions: {
-        ssl: true,
+        ssl: {
+          require: true,
+          rejectUnauthorized: false,
+        },
       },
     }),
     ItemsModule,
